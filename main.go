@@ -87,9 +87,9 @@ func drawStats() {
 	fmt.Printf("wpm: %.0f \n", stats.WPM)
 	fmt.Printf("accuracy: %.0f", stats.Accuracy)
 	fmt.Print("% \n")
-	fmt.Printf("all letters: %d\n", stats.All_letters)
-	fmt.Printf("corret letters: %d\n", stats.Correct_letters)
-	fmt.Printf("wrong letters: %d\n", stats.Wrong_letters)
+	fmt.Printf("all symbols: %d\n", stats.All_letters)
+	fmt.Printf("corret symols: %d\n", stats.Correct_letters)
+	fmt.Printf("wrong symbols: %d\n", stats.Wrong_letters)
 	fmt.Printf("correct words: %d\n", stats.Correct_words)
 }
 
