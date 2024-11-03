@@ -8,6 +8,8 @@ import (
 	"ttt/repo"
 )
 
+const MINUTE = 5
+
 var general []string = []string{}
 var preview []string = []string{}
 var startTime time.Time
@@ -51,9 +53,9 @@ func processInput() {
 
 func showTimer() float64 {
 	diff := time.Now().Sub(startTime)
-	left := 60 - diff.Seconds()
+	left := MINUTE - diff.Seconds()
 	if left < -1 {
-		left = 60
+		left = MINUTE
 	}
 	return left
 }
