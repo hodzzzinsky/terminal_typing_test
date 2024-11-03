@@ -95,7 +95,7 @@ func drawStats() {
 
 func drawUI() {
 	for {
-		fmt.Println("\033[H\033[2J")
+		fmt.Print("\033[H\033[2J")
 		fmt.Printf("press ESC to quit \n")
 		fmt.Println()
 		fmt.Printf("⏱️ %.0f", showTimer())
