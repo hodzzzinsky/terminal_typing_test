@@ -32,17 +32,14 @@ func processInput() {
 		if err != nil {
 			panic(err)
 		}
-		//replace with switch case
-		if key == keyboard.KeyEsc {
+		switch key {
+		case keyboard.KeyEsc:
 			drawStats()
 			os.Exit(0)
-		} else if key == keyboard.KeyBackspace ||
-			key == keyboard.KeyDelete ||
-			key == keyboard.KeyBackspace2 {
+		case keyboard.KeyBackspace, keyboard.KeyDelete, keyboard.KeyBackspace2:
 			repo.DeleteLast()
-		} else {
+		default:
 			repo.Append(char)
-			//fmt.Printf("You pressed: rune %q, key %X\r\n", char, key)
 		}
 		if !started {
 			startTime = time.Now()
