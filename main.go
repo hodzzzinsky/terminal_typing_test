@@ -8,6 +8,8 @@ import (
 	"ttt/repo"
 )
 
+const MINUTE = 60
+
 var general []string = []string{}
 var preview []string = []string{}
 var startTime time.Time
@@ -26,23 +28,19 @@ func processInput() {
 	defer func() {
 		_ = keyboard.Close()
 	}()
-
 	for {
 		char, key, err := keyboard.GetKey()
 		if err != nil {
 			panic(err)
 		}
-		//replace with switch case
-		if key == keyboard.KeyEsc {
+		switch key {
+		case keyboard.KeyEsc:
 			drawStats()
 			os.Exit(0)
-		} else if key == keyboard.KeyBackspace ||
-			key == keyboard.KeyDelete ||
-			key == keyboard.KeyBackspace2 {
+		case keyboard.KeyBackspace, keyboard.KeyDelete, keyboard.KeyBackspace2:
 			repo.DeleteLast()
-		} else {
+		default:
 			repo.Append(char)
-			//fmt.Printf("You pressed: rune %q, key %X\r\n", char, key)
 		}
 		if !started {
 			startTime = time.Now()
@@ -54,9 +52,9 @@ func processInput() {
 
 func showTimer() float64 {
 	diff := time.Now().Sub(startTime)
-	left := 60 - diff.Seconds()
+	left := MINUTE - diff.Seconds()
 	if left < -1 {
-		left = 60
+		left = MINUTE
 	}
 	return left
 }
